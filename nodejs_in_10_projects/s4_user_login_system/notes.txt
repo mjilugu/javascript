@@ -1,0 +1,7 @@
+mongodb
+	NoSQL, document database
+	c:\mongodb\bin>mongod --directoryperdb --dbpath c:\mongodb\data\db --logpath c:\mongodb\log\mongodb.log --logappend -rest --install
+	net start MongoDB
+	use nodeauth
+	db.users.update({username:"devuser1"},{$set:{email:"devuser1@gmail.com"}});
+	getbootstrab.com
