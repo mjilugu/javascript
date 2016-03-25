@@ -5,3 +5,5 @@ mongodb
 	use nodeauth
 	db.users.update({username:"devuser1"},{$set:{email:"devuser1@gmail.com"}});
 	getbootstrab.com
+	
+npm install -g node-gyp

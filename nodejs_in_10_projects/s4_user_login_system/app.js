@@ -3,12 +3,11 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var expressValidator = require('express-validator');
-var cookieParser = require('cookie-parser');
+// var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var passport = require('passport');
+// var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var bodyParser = require('body-parser');
-var multer = require('multer');
+// var bodyParser = require('body-parser');
 var flash = require('connect-flash');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
@@ -16,7 +15,6 @@ var db = mongoose.connection;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var uploads = multer({dest:'./uploads'});
 
 var app = express();
 
@@ -24,14 +22,11 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// Handle file Uploads **** Find out more about this*********
-app.use(uploads.single('photo'));
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
 
 // Handle Express Sessions
 app.use(session({
@@ -41,12 +36,13 @@ app.use(session({
 }));
 
 // Passport
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // Validator
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
+	  console.log('#############Express Validator################### ' + param + " - " + value);
       var namespace = param.split('.')
       , root    = namespace.shift()
       , formParam = root;
@@ -62,7 +58,7 @@ app.use(expressValidator({
   }
 }));
 
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(flash());
