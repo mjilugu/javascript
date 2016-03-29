@@ -5,8 +5,7 @@ var logger = require('morgan');
 var expressValidator = require('express-validator');
 // var cookieParser = require('cookie-parser');
 var session = require('express-session');
-// var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+var passport = require('passport');
 // var bodyParser = require('body-parser');
 var flash = require('connect-flash');
 var mongo = require('mongodb');
@@ -36,8 +35,8 @@ app.use(session({
 }));
 
 // Passport
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Validator
 app.use(expressValidator({
@@ -67,6 +66,10 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.get('*', function (req, res, next) {
+	res.locals.user = req.user || null;
+	next();
+});
 app.use('/', routes);
 app.use('/users', users);
 

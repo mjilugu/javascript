@@ -4,6 +4,8 @@ var multer = require('multer');
 var uploads = multer({dest:'./uploads/'});
 var User = require('../models/user');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 // create application/json parser
 var jsonParser = bodyParser.json();
@@ -96,6 +98,55 @@ router.post('/register', uploads.single('profileImage'), function(req, res, next
 		res.location('/');
 		res.redirect('/');
 	}
+});
+
+passport.serializeUser(function(user, done) {
+	done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+	User.getUserById(id, function(err, user) {
+		done(err, user);
+	});
+});
+
+passport.use(new LocalStrategy(function(username, password, done){
+	console.log('LocalStrategy verifying user ' + username);
+	User.getUserByUsername(username, function (err, user) {
+		if (err) throw err;
+		if (!user){
+			console.log('Unknown User');
+			return done(null, false, {message: 'Unknown User'});
+		}
+		
+		User.comparePasswords(password, user.password, function(err, isMatch){
+			if (err) throw err;
+			if (isMatch) {
+				console.log('Password verified');
+				return done(null,user);
+			} else {
+				console.log('Invalid Password');
+				return done(null,false,{message:'Invalid Password'});
+			}
+		});
+	});
+}));
+
+router.post('/login',
+	uploads.single(),
+	passport.authenticate('local', {failureRedirect:'/users/login', 
+		failureFlash:'Invalid username or password'}), 
+	function(req, res, next) {
+		// If this function gets called, authentication was successful
+		console.log('Authentication Successful');
+		req.flash('success','You are logged in');
+		res.redirect('/');
+});
+
+router.get('/logout', function (req, res) {
+	req.logout();
+	req.flash('success','You have logged out');
+	res.redirect('/users/login');
 });
 
 
