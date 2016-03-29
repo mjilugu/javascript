@@ -1,0 +1,47 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'c:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
+2 info using npm@3.7.3
+3 info using node@v5.9.0
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle s4_user_login_system@1.0.0~prestart: s4_user_login_system@1.0.0
+6 silly lifecycle s4_user_login_system@1.0.0~prestart: no script for prestart, continuing
+7 info lifecycle s4_user_login_system@1.0.0~start: s4_user_login_system@1.0.0
+8 verbose lifecycle s4_user_login_system@1.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle s4_user_login_system@1.0.0~start: PATH: c:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;c:\Users\IBM_ADMIN\gitRepos\javascript\nodejs_in_10_projects\s4_user_login_system\node_modules\.bin;c:\Program Files\nodejs;c:\Users\IBM_ADMIN\bin;.;C:\Program Files (x86)\Git\local\bin;C:\Program Files (x86)\Git\mingw\bin;C:\Program Files (x86)\Git\bin;c:\ProgramData\Oracle\Java\javapath;c:\Perl64\site\bin;c:\Perl64\bin;c:\windows\system32;c:\windows;c:\windows\System32\Wbem;c:\windows\System32\WindowsPowerShell\v1.0\;c:\Program Files\IBM\Infoprint Select;c:\Program Files\ThinkPad\Bluetooth Software\;c:\Program Files\ThinkPad\Bluetooth Software\syswow64;c:\Program Files\Intel\WiFi\bin\;c:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Git\cmd;c:\opscode\chefdk\bin;c:\HashiCorp\Vagrant\bin;c:\Program Files (x86)\Google\Cloud SDK\google-cloud-sdk\bin;c:\windows\system32\config\systemprofile\.dnx\bin;c:\Program Files\Microsoft DNX\Dnvm\;c:\Program Files (x86)\CloudFoundry;c:\Program Files\IBM\Bluemix\bin;c:\Program Files\nodejs\;c:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;c:\python27_x64;c:\python27_x64\Scripts;c:\Users\IBM_ADMIN\Development\java_ee_sdk-7u1\glassfish4\bin;c:\Users\IBM_ADMIN\Development\java_ee_sdk-7u1\glassfish4\glassfish\bin;c:\Program Files\Intel\WiFi\bin\;c:\Program Files\Common Files\Intel\WirelessCommon\;c:\Program Files (x86)\Apache Group\apache-maven-3.2.3\bin;c:\Program Files\Java\jdk1.8.0_60\bin;c:\Program Files (x86)\gradle-2.6\bin;c:\Users\IBM_ADMIN\AppData\Local\Box\Box Edit\;c:\Users\IBM_ADMIN\AppData\Roaming\npm
+10 verbose lifecycle s4_user_login_system@1.0.0~start: CWD: c:\Users\IBM_ADMIN\gitRepos\javascript\nodejs_in_10_projects\s4_user_login_system
+11 silly lifecycle s4_user_login_system@1.0.0~start: Args: [ '/d /s /c', 'node ./bin/www' ]
+12 silly lifecycle s4_user_login_system@1.0.0~start: Returned: code: 1  signal: null
+13 info lifecycle s4_user_login_system@1.0.0~start: Failed to exec start script
+14 verbose stack Error: s4_user_login_system@1.0.0 start: `node ./bin/www`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (c:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:239:16)
+14 verbose stack     at emitTwo (events.js:100:13)
+14 verbose stack     at EventEmitter.emit (events.js:185:7)
+14 verbose stack     at ChildProcess.<anonymous> (c:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:100:13)
+14 verbose stack     at ChildProcess.emit (events.js:185:7)
+14 verbose stack     at maybeClose (internal/child_process.js:850:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
+15 verbose pkgid s4_user_login_system@1.0.0
+16 verbose cwd c:\Users\IBM_ADMIN\gitRepos\javascript\nodejs_in_10_projects\s4_user_login_system
+17 error Windows_NT 6.1.7601
+18 error argv "c:\\Program Files\\nodejs\\node.exe" "c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
+19 error node v5.9.0
+20 error npm  v3.7.3
+21 error code ELIFECYCLE
+22 error s4_user_login_system@1.0.0 start: `node ./bin/www`
+22 error Exit status 1
+23 error Failed at the s4_user_login_system@1.0.0 start script 'node ./bin/www'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the s4_user_login_system package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     node ./bin/www
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs s4_user_login_system
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls s4_user_login_system
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
