@@ -93,50 +93,48 @@ router.post('/addcomment', uploads.single(), function(req, res, next) {
 	var email 		= req.body.email;
 	var body 		= req.body.body;
 	var postid 		= req.body.postid;
-	var date 		= new Date();
-	
-	if (req.file) {
-		var mainImageOriginalName = req.file.originalname;
-		var mainImageName = req.file.filename;
-		var mainImageMime = req.file.mimetype;
-		var mainImagePath = req.file.path;
-		var mainImageExt  = req.file.extension;
-		var mainImageSize = req.file.size;
-	} else {
-		var mainImageName = 'noimage.png';
-	}
+	var commentdate = new Date();
 	
 	// Form validation
-	req.checkBody('title','Title field is required').notEmpty();
+	req.checkBody('name','Name field is required').notEmpty();
+	req.checkBody('email','Email field is required').notEmpty();
+	req.checkBody('email','Email format is wrong').isEmail();
 	req.checkBody('body','Body field is required').notEmpty();
 	
 	// Check Errors
 	var errors = req.validationErrors();
 	
 	if (errors) {
-		res.render('addpost',{
-			"errors":errors,
-			"title":title,
-			"body":body
+		var posts = db.get('posts');
+		posts.findById(postid, function (err,post) {
+			res.render('show',{
+				"errors":errors,
+				"posts":posts
+			});
 		});
 	} else {
+		var comment = {
+			"name" : name,
+			"email" : email,
+			"body" : body,
+			"commentdate" : commentdate
+		};
+		
 		var posts = db.get('posts');
 		
-		// Submit to DB
-		posts.insert({
-			"title": title,
-			"body": body,
-			"category": category,
-			"date": date,
-			"author": author,
-			"mainimage": mainImageName
-		}, function (err, post) {
+		posts.update({
+			"_id": postid
+		},{
+			$push: {
+				"comments": comment
+			}
+		}, function(err, doc){
 			if (err) {
-				res.send('There was an issue submitting the post');
+				throw err;
 			} else {
-				req.flash('success','Post Submitted');
-				res.location('/');
-				res.redirect('/');
+				req.flash('success','Comment Added');
+				res.location('/posts/show/'+postid);
+				res.redirect('/posts/show/'+postid);
 			}
 		});
 	}
