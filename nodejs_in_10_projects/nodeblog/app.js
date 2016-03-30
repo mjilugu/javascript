@@ -27,6 +27,12 @@ app.locals.truncateText = function(text,length){
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+// Mozzy middleware
+app.use('', function (req, res, next) {
+	console.log('Mozzy-ware was invoked');
+	next();
+});
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
