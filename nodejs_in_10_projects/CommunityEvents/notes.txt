@@ -1,0 +1,17 @@
+mongolab
+drywall
+
+
+db.admingroups.insert({ _id: 'root', name: 'Root' });
+db.admins.insert({ name: {first: 'Root', last: 'Admin', full: 'Root Admin'}, groups: ['root'] });
+var rootAdmin = db.admins.findOne();
+db.users.save({ username: 'root', isActive: 'yes', email: 'your@email.addy', roles: {admin: rootAdmin._id} });
+var rootUser = db.users.findOne();
+rootAdmin.user = { id: rootUser._id, name: rootUser.username };
+db.admins.save(rootAdmin);
+
+## extras
+db.users.update({username:'root'},{$set:{email:'mjilugudebug@gmail.com'}});
+
+db.createCollection('events');
+db.events.insert({name:'Event One', description: 'This is the first event', date: new Date('May 31, 2016'), venue: 'Venue One', startTime:'2:00pm', endTime:'7:00pm'});
