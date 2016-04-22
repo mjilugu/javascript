@@ -1,0 +1,7 @@
+Q 1. A rest-enabled URI must support all HTTP methods relevant to the rest principles.
+
+Q 2. In case of a failed content negotiation, it is up to the API to decide whether to return status "406 Not accepted" or the data in a default format, which is different from the requested format.
+
+Q 3. Access-Control-Allow-Origin, Access-Control-Allow-Methods, and Access-Control-Allow-Headers are all mandatory CORS response headers.
+
+Q 4. When using parameterized routes, the developer can specify the type of the parameter, for example, whether it is a numeric or a literal type.

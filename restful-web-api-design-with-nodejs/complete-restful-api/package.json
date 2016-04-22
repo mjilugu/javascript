@@ -1,0 +1,16 @@
+{
+	"name" : "express-example",
+	"version": "0.17.0",
+	"private": true,
+	"scripts": {
+		"start": "node app.js"
+	},
+	"dependencies" : {
+		"express": "*",
+		"body-parser": "*",
+		"jade" : "*",
+		"morgan":"*",
+		"method-override":"*",
+		"errorhandler" : "*"
+	}
+}
